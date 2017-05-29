@@ -1,6 +1,5 @@
 language: node_js
 node_js: 6.10.3
-hexo: 3.3.6
 
 # S: Build Lifecycle
 install:

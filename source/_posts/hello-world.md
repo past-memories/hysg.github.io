@@ -2,6 +2,7 @@
 title: 新的开始  
 date: 2017-05-22 23:20:07  
 tags: note
+categories: hello
 permalink: 869b9411f40e68cbc9ca283ed9946c95  
 ---
 接触了许多博客程序，比如wordpress。不过最后还是决定上hexo加next主题。
