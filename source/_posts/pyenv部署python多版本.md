@@ -3,9 +3,9 @@ title: pyenv部署python多版本
 date: 2017-05-23 00:36:25
 tags: python3
 categories: python
-permalink: 2d0e324e1303a9a0d6bdaf317c31f0c3.html
+permalink: 2d0e324e1303a9a0d6bdaf317c31f0c3
 ---
-## pyenv简介
+### pyenv简介
 pyenv让你可以轻松地在不同版本的Python之间切换。pyenv使用起来很简单，并且遵循了UNIX传统的单一用途工具。
 <!--more-->
 ### 系统版本
