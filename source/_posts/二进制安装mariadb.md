@@ -1,8 +1,8 @@
 ---
 title: 二进制安装mariadb
 date: 2017-05-29 18:30:03
-tags:
-categories:
+tags: mariadb安装
+categories: mariadb
 permalink: 40f6edeae4284dc5c42a15b52b5d0c95
 ---
 ### mariadb简介
