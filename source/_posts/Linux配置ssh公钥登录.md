@@ -1,8 +1,8 @@
 ---
 title: centos配置ssh公钥登录
 date: 2017-06-15 14:04:11
-tags: centos
-categories:
+tags: centos系统配置
+categories: centos
 permalink: 9b75e2b8516968af12514590bd5928b2
 ---
 远程登录centos服务器，如果使用用户名和密码登录，是不安全的。纯密码容易被爆破。推荐使用ssh公钥登录服务器。
@@ -104,3 +104,25 @@ The key's randomart image is:
 ![新建密钥](https://hysgsta.b0.upaiyun.com/img/2017/6/15/5.JPG!img)
 
 方法选择公钥验证，用户密钥选择私钥
+
+### 免帐号登录
+一般情况下，本地主机登录远程主机的命令是
+```
+ssh user@192.168.2.1
+```
+当然还有一种更简便的方法来登录远程主机
+```
+vim ~/.ssh/config
+// 添加
+Host node1
+   HostName 192.168.2.1
+   Port 22
+   User user
+   IdentityFile /home/hysg/.ssh/id_rsa
+// 修改权限
+chmod 600 ~/.ssh/config
+```
+再登录远程主机，可以使用命令
+```
+ssh node1
+```
