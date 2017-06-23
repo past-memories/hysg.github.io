@@ -12,14 +12,27 @@ pyenv让你可以轻松地在不同版本的Python之间切换。pyenv使用起�
 ### 系统版本
 
 + centos 7.2
++ ubuntu 16.04 LTS
 
 ### 开始安装
-#### yum解决依赖
+#### 解决依赖
+
++ centos
+
 ```
-yum install git gcc make patch zlib-devel -y
-yum install gdbm-devel openssl-devel sqlite-devel -y
-yum install bzip2-devel readline-devel -y
+yum install gcc zlib-devel bzip2 bzip2-devel \
+            readline-devel sqlite sqlite-devel \
+            openssl-devel tk-devel -y
 ```
+
++ ubuntu
+
+```
+sudo apt-get install make build-essential libssl-dev zlib1g-dev \
+                     libbz2-dev libreadline-dev libsqlite3-dev \
+                     wget curl llvm libncurses5-dev xz-utils tk-dev sqlite
+```
+
 #### 新建用户
 pyenv使用普通用户就能安装，所以就直接使用普通用户身份安装并使用
 ```
@@ -36,7 +49,10 @@ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-
 #### 设置环境变量
 修改配置文件
 ```
+// centos系统
 vim .bash_profile
+// ubuntu系统
+vim .basrc
 PATH=~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

@@ -12,7 +12,7 @@ mariadb> SELECT VERSION();
 +-----------------+
 | VERSION()       |
 +-----------------+
-| 10.1.24-MariaDB |
+| 10.2.6-MariaDB |
 +-----------------+
 1 row in set
 ```
