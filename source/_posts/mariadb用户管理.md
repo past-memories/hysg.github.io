@@ -1,7 +1,7 @@
 ---
 title: mariadb用户管理
 date: 2017-06-16 14:04:09
-tags:
+tags: mariadb基础
 categories: mariadb
 permalink: cb4778f37a1703d3f2eff90be200c6c2
 ---
