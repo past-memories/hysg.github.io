@@ -22,7 +22,7 @@ pyenv让你可以轻松地在不同版本的Python之间切换。pyenv使用起�
 ```
 yum install gcc zlib-devel bzip2 bzip2-devel \
             readline-devel sqlite sqlite-devel \
-            openssl-devel tk-devel -y
+            openssl-devel tk-devel readline-devel xz xz-devel -y
 ```
 
 + ubuntu
