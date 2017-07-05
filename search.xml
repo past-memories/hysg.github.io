@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[mariadb字符类型]]></title>
+    <url>%2F2017%2F06%2F26%2Fcde3b97776a09e49ee87bc7407fd070e.html</url>
+    <content type="text"><![CDATA[mariadb中有多种字符类型,选择正确合理的字符类型，可以节约磁盘空间，提高工作效率。mariadb的字符类型有： 整数 浮点数 字符串 日期时间型 整数 类型 大小(字节) 范围(有符号) 范围(无符号) 用途 TINYINT 1 (-128,127) (0,255) 小整数值 SMALLINT 2 (-32 768，32 767) (0，65535) 大整数值 MEDIUMINT 3 ($-2^{23}$,$2^{23}-1$) (0，$2^{24}-1$) 大整数值 INT 4 ($-2^{31}$,$2^{31}-1$) (0，$2^{32}-1$) 大整数值 BIGINT 8 ($-2^{63}$,$2^{63}-1$) (0,$2^{64}-1$) 极大整数值 浮点数 类型 大小(字节) 范围(有符号) 范围(无符号) 用途 FLOAT 4 ($-2^{31}$,$2^{32}-1$) (0,$2^{32}-1$) 单精度浮点数值 DOUBLE 8 ($-2^{64}$,$2^{64}-1$) ($0,2^{64}-1$) 双精度浮点数值 DECLMAL 对于DECIMAL(M,D)，为M+2 依赖于M和D的值 依赖于M和D的值 小数值 字符串 类型 大小(字节) 用途 char (0,255) 定长字符类型 varchar (0,$2^{16}$) 变长字符类型 TINYTEXT (0,255) 短文本字符串 TEXT (0,$2^{16}$) 长文本数据 MEDIUMTEXT (0,$2^{24}$) 中等长度文本数据 LONGTEXT (0,$2^{32}$) 极大文本数据 ENUM (0,$2^{16}$) 枚举 日期时间型 类型 大小(字节) 格式 范围 用途 DATE 3 YYYY-MM-DD (1000-01-01, 9999-12-31) 日期值 TIME 3 HH:MM:SS (‘-838:59:59’,’838:59:59’) 时间值或持续时间 DATE 3 YYYY (1901,2155) 年份值 DATETIME 8 YYYY-MM-DD HH:MM:SS (1000-01-01 00:00:00,999-12-31 23:59:59) 混合日期时间值 TIMESTAMP 4 YYYYMMDD HHMMSS (1970-01-01 00:00:00,2037年) 时间戳]]></content>
+      <categories>
+        <category>mariadb</category>
+      </categories>
+      <tags>
+        <tag>mariadb基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git status中文乱码]]></title>
+    <url>%2F2017%2F06%2F22%2F67f6feda6b2616888986268f97d926b9.html</url>
+    <content type="text"><![CDATA[有时使用命令git status时候会乱码。这只是把中文转换成了Unicode编码了。 解决也很简单，只需要一条命令。1git config --global core.quotepath false 这样中文就不会乱码了。]]></content>
+      <categories>
+        <category>centos</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos安装docker]]></title>
+    <url>%2F2017%2F06%2F21%2F5e9fb620725e9c4b79e7cfb04aa397ab.html</url>
+    <content type="text"><![CDATA[系统环境 centos 7.3 docker简介Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 安装dockercentos 7.x版本才支持docker，低于centos 7的版本不正常docker，所以要使用centos 7版本。另外centos官方yum仓库的docker太老，推荐使用docker官方yum仓库。 配置yum仓库。123456[dockerrepo]name=Docker Repositorybaseurl=https://mirrors.tuna.tsinghua.edu.cn/docker/yum/repo/centos7enabled=1gpgcheck=1gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker/yum/gpg 缓存索引1yum mackecache 最后安装docker1yum install docker-engine 类似这样就安装docker成功了 启动docker1systemctl start docker 输入命令，查看docker版本 新建一个docker组1groupadd docker 为了安全，把新用户添加进docker组1usermod -aG docker hy 因为某些原因，在国内直接调用docker官方源，下载速度很慢。不过可以使用docker加速器。 注册daocloud，可以使用daocloud加速器。1curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://******.m.daocloud.io 输出hello world启动docker成功，就用docker输出hello world吧！1$docker run hello-world]]></content>
+      <categories>
+        <category>centos</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mariadb用户管理]]></title>
+    <url>%2F2017%2F06%2F16%2Fcb4778f37a1703d3f2eff90be200c6c2.html</url>
+    <content type="text"><![CDATA[数据库版本查看数据库版本1234567mariadb&gt; SELECT VERSION();+-----------------+| VERSION() |+-----------------+| 10.2.6-MariaDB |+-----------------+1 row in set 新建用户在客户端登录mariadb数据库，使用sql命令新建用户1CREATE USER &apos;username&apos;@&apos;host&apos; IDENTIFIED BY &apos;PASSWORD&apos;; 其中HOST字段可以设置为 IP地址，如192.168.2.2 地址段，如192.168.2.% 主机名，如localhost 通配符，如% 删除用户删除用户使用命令1DROP user &apos;username&apos;@&apos;host&apos;; 用户授权 给用户授权，使用命令 1GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;host&apos;; privileges可以指定为INSERT，DROP，UPDATE，SELECT等 如赋予用户增删改查的权利1GRANT INSERT，DROP，UPDATE，SELECT ON test.* TO &apos;username&apos;@&apos;host&apos;; 查看已授权用户权限 1SHOW GRANTS FOR &apos;username&apos;@&apos;host&apos;; 如查看root用户在127.0.0.1主机上权限1234567SHOW GRANTS FOR &apos;root&apos;@&apos;127.0.0.1&apos;;+----------------------------------------------------------------------------------------------------------------------------------------+| Grants for root@127.0.0.1 |+----------------------------------------------------------------------------------------------------------------------------------------+| GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;127.0.0.1&apos; IDENTIFIED BY PASSWORD &apos;*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9&apos; WITH GRANT OPTION |+----------------------------------------------------------------------------------------------------------------------------------------+1 row in set 给其他用户授权如果用户A想给其他用户授权，给用户A授权的语句就不太一样1GRANT privilege ON databasename.tablename TO &apos;username&apos;@&apos;host&apos; WITH GRANT OPTION; 这样用户A就能给其他用户授权了 移除用户权限移除用户权限使用命令，1REVOKE privilege ON databasename.tablename FROM &apos;username&apos;@&apos;host&apos;; 重置用户密码 未登录用户，重置密码，使用命令 1SET PASSWORD FOR &apos;username&apos;@&apos;host&apos; = PASSWORD(&apos;newpassword&apos;); 已经登录用户，重置密码，使用命令 1SET PASSWORD = PASSWORD(&quot;newpassword&quot;); 数据库用户权限表 权限 描述 INSERT 增 DROP 删 UPDATE 改 SELECT 查 INDEX 索引 VIEW 视图 ROUTINE 储存过程]]></content>
+      <categories>
+        <category>mariadb</category>
+      </categories>
+      <tags>
+        <tag>mariadb基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos配置ssh公钥登录]]></title>
+    <url>%2F2017%2F06%2F15%2F9b75e2b8516968af12514590bd5928b2.html</url>
+    <content type="text"><![CDATA[远程登录centos服务器，如果使用用户名和密码登录，是不安全的。纯密码容易被爆破。推荐使用ssh公钥登录服务器。 公共配置修改sshd配置文件123456789101112131415// 切换成root用户su rootvim /etc/ssh/sshd_config// 修改成其他端口Port 22// 取消注释RSAAuthentication yesPubkeyAuthentication yesAuthorizedKeysFile .ssh/authorized_keys// 禁止root用户登录PermitRootLogin no// 禁止使用密码登录PasswordAuthentication no// 重启sshd服务service sshd restart xshell创建密钥Xshell终端模拟器是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。将使用xshell创建一对密钥对，公钥上传到服务器。 点击用户密钥生成向导 密钥类型选择RSA，密钥长度越长，生成时间就越长。 这一步会生成密钥，根据密钥长度不同，生成的时间也不一定 复制文本框里面的公钥，备用 然后登录服务器，输入命令12345mkdir .sshchmod 700 .ssh// 将上面公钥复制到这个文件vim authorized_keyschmod 644 authorized_keys 使用ssh-keygen创建密钥登录服务器，使用命令创建密钥123456789101112131415161718192021ssh-keygen -t rsa -b 2048Generating public/private rsa key pair.Enter file in which to save the key (/home/hysg/.ssh/id_rsa):Enter passphrase (empty for no passphrase):Enter same passphrase again:Your identification has been saved in /home/hysg/.ssh/id_rsa.Your public key has been saved in /home/hysg/.ssh/id_rsa.pub.The key fingerprint is:44:1d:cb:9b:6a:a7:d3:d4:b8:b4:3f:21:18:e9:d5:8d hysg@iZ2884cni4lZThe key&apos;s randomart image is:+--[ RSA 2048]----+| .... || . ... || ..o. o || .o .oE . || .S+oo || o.= o || o+.+ . || ..o+ . || .. ... |+-----------------+ 会让你指定密钥文件的位置和名字，默认在~/home/.ssh/下面; 会询问你是否需要输入密码。输入密码之后，以后每次都要输入密码。根据自身的安全需要决定是否需要密码，如果不需要，直接回车; 使用tree命令，查看生成的文件123456[hysg@iZ2884cni4lZ .ssh]$ tree.├── id_rsa└── id_rsa.pub0 directories, 2 files 其中id_rsa是私钥，id_rsa.pub是公钥，把私钥文件下载到本地备用 登录服务器打开xshell新建连接，点击用户身份验证 方法选择公钥验证，用户密钥选择私钥 免帐号登录一般情况下，本地主机登录远程主机的命令是1ssh user@192.168.2.1 当然还有一种更简便的方法来登录远程主机123456789vim ~/.ssh/config// 添加Host node1 HostName 192.168.2.1 Port 22 User user IdentityFile /home/hysg/.ssh/id_rsa// 修改权限chmod 600 ~/.ssh/config 再登录远程主机，可以使用命令1ssh node1]]></content>
+      <categories>
+        <category>centos</category>
+      </categories>
+      <tags>
+        <tag>centos系统配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二进制安装mariadb]]></title>
+    <url>%2F2017%2F05%2F29%2F40f6edeae4284dc5c42a15b52b5d0c95.html</url>
+    <content type="text"><![CDATA[mariadb简介 MySQL是一个关系型数据库管理系统，是最流行的关系型数据库管理系统，由于其体积小、速度快、总体拥有成本低，并且之前是完全开源，所以大受欢迎。但由于后面MySQL卖给了SUN，随后SUN被Oracle收购，虽然也有开源免费版本，但是很多功能都需要另外购买商业版本，导致现在MySQL使用份额逐渐减少。所以MariaDB就是因为这种原因诞生出来，成为数据库管理系统是MySQL的一个分支。 mariadb官网 系统环境 centos 6.8 mariadb 10.1.24 安装依赖1yum install -y libaio 安装mariadb 下载安装包可以到mariadb官方网站或者到我准备的镜像站下载安装包 123456cd /usr/local/wget https://inmir.b0.upaiyun.com/mariadb/generic/10/mariadb-10.1.24-linux-x86_64.tar.gz// 解压安装包tar -xzf mariadb-10.1.24-linux-x86_64.tar.gz// 重命名文件目录mv mariadb-10.1.24-linux-x86_64 mysql 新建组和用户 12groupadd mysqluseradd mysql -g mysql -s /sbin/nologin -M 添加系统环境变量 123echo &quot;PATH=$PATH:/usr/local/mysql/bin&quot; &gt; /etc/profile.d/mysql.sh// 重读配置文件source /etc/profile.d/mysql.sh 准备文件 新建数据库文件目录1mkdir -p /data/mysql 新建日志文件目录1mkdir /var/log/mysql 新建配置文件文件目录1mkdir /etc/mysql 复制启动脚本12cp /usr/local/mysql/support-files/mysql.server /etc/rc.d/init.d/mysqldchmod +x /etc/rc.d/init.d/mysqld 复制配置文件1cp /usr/local/mysql/support-file/my-small.cnf /etc/mysql/my.cnf 在配置文件中添加下面的内容1234567891011[client]default-character-set=utf8mb4[mysqld]basedir = /usr/local/mysqldatadir = /data/mysql/datauser = mysqlcharacter-set-server=utf8mb4default-storage-engine = innodbbind-address = 127.0.0.1// 禁用域名解析skip-name-resolve = on 初始化数据库 初始化数据库，注意有没有报错信息1./mysql_install_db --user=mysql --datadir=/data/mysql/ --basedir=/usr/local/mysql/ 初始化数据库成功，就像下面这样 如果数据库初始化成功，就可以启动数据库了 启动数据库1service mysqld start 数据库启动成功，就开始监听3306端口 数据库安全设置 使用mysql安全设置可以重置root用户密码，禁止root用户远程登录，删除匿名用户和test数据库 这样mariadb就安装成功了。]]></content>
+      <categories>
+        <category>mariadb</category>
+      </categories>
+      <tags>
+        <tag>mariadb安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos安装pip]]></title>
+    <url>%2F2017%2F05%2F25%2F2d261affc14ef8960fb0c2dd554bf7c2.html</url>
+    <content type="text"><![CDATA[pip简介pip为包管理器，跟linux上众多的包管理器的功能大致相同，就是对包进行管理，使得包的安装，更新和卸载更容易。在python2.7.9以上和3.4以上自带pip包管理器。 pip安装首先去下载geit.pip.py文件 123456// 官方下载地在wget https://bootstrap.pypa.io/get-pip.py// 我提供的镜像站wget https://inmir.b0.upaiyun.com/python/tool/get-pip.py下载完成以后，使用python命令安装python get-pip.py 解决警告pip安装完以后，会有一句警告1DEPRECATION: The default format will switch to columns in the future. You can use --format=(legacy|columns) (or define a format=(legacy|columns) in your pip.conf under the [list] section) to disable this warning. 在pip的配置文件中，添加123456vim ~/.pip/pip.conf[list]format=columns// 或者[list]format=legacy 配置本地源如果从官方源下载速度太慢，可以配置其他源, 临时使用 1234// 清华大学源pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package// 豆瓣源pip install -i https://pypi.douban.com/simple some-package 设置默认 12345[global]// 清华大学源index-url = https://pypi.tuna.tsinghua.edu.cn/simple// 豆瓣源index-url = https://pypi.douban.com/simple requirements.txt依赖查看别人的Python项目时，经常会看到一个requirements.txt文件，里面记录了当前程序的所有依赖包及其精确版本号。 requirements.txt可以通过pip命令自动生成和安装 生成requirements.txt文件1pip freeze &gt; requirements.txt 安装requirements.txt依赖1pip install -r requirements.txt]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>pip配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[pyenv部署python多版本]]></title>
+    <url>%2F2017%2F05%2F22%2F2d0e324e1303a9a0d6bdaf317c31f0c3.html</url>
+    <content type="text"><![CDATA[pyenv简介pyenv让你可以轻松地在不同版本的Python之间切换。pyenv使用起来很简单，并且遵循了UNIX传统的单一用途工具。 系统版本 centos 7.2 ubuntu 16.04 LTS 开始安装解决依赖 centos 123yum install gcc zlib-devel bzip2 bzip2-devel \ readline-devel sqlite sqlite-devel \ openssl-devel tk-devel readline-devel xz xz-devel -y ubuntu 123sudo apt-get install make build-essential libssl-dev zlib1g-dev \ libbz2-dev libreadline-dev libsqlite3-dev \ wget curl llvm libncurses5-dev xz-utils tk-dev sqlite 新建用户pyenv使用普通用户就能安装，所以就直接使用普通用户身份安装并使用12345// 新建用户useradd hy// 切换到普通用户su hy// 回到当前用户的家目录cd 安装pyenv1curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash 设置环境变量修改配置文件123456789// centos系统vim .bash_profile// ubuntu系统vim .basrcPATH=~/.pyenv/bin:$PATH&quot;eval &quot;$(pyenv init -)&quot;eval &quot;$(pyenv virtualenv-init -)&quot;// 重读配置文件source .bash_profile 部署多python版本可以新建一个目录做为一个python版本12345mkdir python35cd python35pyenv install -v 3.5.3pyenv local 3.5.3pip install --upgrade pip 常见问题如果感觉从python官网下载的python包太慢，可以提前把下载python源码包123456cd ~/.pyenvmkdir cache// 把下载好的python包放在cache目录里面cd cache// 我在又拍云存的源码包wget https://inmir.b0.upaiyun.com/python/Python-3.5.3.tar.xz]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[helloworld]]></title>
+    <url>%2F2017%2F05%2F22%2Ffc5e038d38a57032085441e7fe7010b0.html</url>
+    <content type="text"><![CDATA[接触了许多博客程序，比如wordpress。不过最后还是决定上hexo加next主题。 Hexo是一个基于Node.js快速、简洁且高效的博客框架。Hexo 使用Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 在上hexo的过程，踩了很多坑，可以说是惨不忍睹。不过最终还是熟悉了hexo的用法。用hexo安家了，用python3输出一个hello world来庆祝一下！1&gt;&gt;&gt;print (‘hello world’) 代码如诗，感谢开源世界的开发者！今天是2017年5月22日。开始博客之旅。]]></content>
+      <categories>
+        <category>helloworld</category>
+      </categories>
+      <tags>
+        <tag>helloworld</tag>
+      </tags>
+  </entry>
+</search>
