@@ -64,6 +64,13 @@ mkdir /var/log/mysql
 ```
 mkdir /etc/mysql
 ```
++ 修改目录权限
+```
+chown mysql:mysql -R /data/mysql
+chown mysql:mysql -R /var/log/mysql
+chown mysql:mysql -R /etc/mysql
+chown mysql:root -R /usr/local/mysql
+```
 复制启动脚本
 ```
 cp /usr/local/mysql/support-files/mysql.server /etc/rc.d/init.d/mysqld
@@ -78,10 +85,13 @@ cp /usr/local/mysql/support-file/my-small.cnf /etc/mysql/my.cnf
 [client]
 default-character-set=utf8mb4
 [mysqld]
+pid-file=/tmp/mysql.pid
 basedir         = /usr/local/mysql
-datadir         = /data/mysql/data
+datadir         = /data/mysql/
 user = mysql
 character-set-server=utf8mb4
+log-error=/var/log/mysql/error.log
+log-bin=/var/log/mysql/binlog/mysql_bin
 default-storage-engine = innodb
 bind-address = 127.0.0.1
 // 禁用域名解析
@@ -92,6 +102,7 @@ skip-name-resolve = on
 
 初始化数据库，注意有没有报错信息
 ```
+cd /usr/local/mysql/scripts/
 ./mysql_install_db --user=mysql --datadir=/data/mysql/ --basedir=/usr/local/mysql/
 ```
 初始化数据库成功，就像下面这样
@@ -100,9 +111,16 @@ skip-name-resolve = on
 
 + 如果数据库初始化成功，就可以启动数据库了
 
-启动数据库
+centos 6启动数据库
+
 ```
 service mysqld start
+```
+
+centos 7启动数据库
+```
+systemctl daemon-reload
+systemctl start mysqld
 ```
 数据库启动成功，就开始监听3306端口
 
