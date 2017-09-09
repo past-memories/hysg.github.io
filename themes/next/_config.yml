@@ -224,7 +224,7 @@ post_wordcount:
 # Declare license on posts
 post_copyright:
   enable: true
-  license: Mist
+  license: MIT
   license_url: https://github.com/hysg/hysg.github.io/blob/source/LICENSE
 
 
