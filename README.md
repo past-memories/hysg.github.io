@@ -1,3 +1,5 @@
+**因为以前账户的密码丢失，所以就新建了一个账户。这个留作纪念吧！**
+
 ### 博客仓库  
 
 [![Build Status](https://travis-ci.org/hysg/hysg.github.io.svg?branch=source)](https://travis-ci.org/hysg/hysg.github.io)
